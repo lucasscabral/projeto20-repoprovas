@@ -35,3 +35,7 @@ export async function buscaProfessorDisciplina(professorId: number, disciplinaId
 export async function criaProva(corpoProva: ITestData) {
     return await testRepository.criaProva(corpoProva)
 }
+
+export async function provasPorDisciplinas() {
+    return await testRepository.buscaProvasPorDisciplinas()
+}

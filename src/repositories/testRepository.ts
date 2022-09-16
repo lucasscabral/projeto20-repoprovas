@@ -27,3 +27,35 @@ export async function buscaProfessorDisciplinaId(professorId: number, disciplina
 export async function criaProva(corpoProva: ITestData) {
     return await prisma.tests.create({ data: corpoProva })
 }
+
+export async function buscaProvasPorDisciplinas() {
+    return prisma.terms.findMany({
+        select: {
+            number: true,
+            Disciplines: {
+                select: {
+                    name: true,
+                    TeachersDisciplines: {
+                        select: {
+                            Tests: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                    pdfUrl: true,
+                                    category: { select: { name: true } }
+                                }
+                            },
+                            teacher: {
+                                select: {
+                                    name: true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // select: {
+
+    })
+}

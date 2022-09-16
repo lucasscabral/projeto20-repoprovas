@@ -19,3 +19,12 @@ export async function criaProva(req: Request, res: Response) {
 
     res.sendStatus(201)
 }
+
+
+export async function listaProvasDisciplinas(_: Request, res: Response) {
+
+    const provasPorDisciplinas = await testService.provasPorDisciplinas()
+    console.log(provasPorDisciplinas)
+
+    res.send(provasPorDisciplinas)
+}
