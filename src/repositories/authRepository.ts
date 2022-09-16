@@ -7,6 +7,5 @@ export async function buscaPorEmail(email: string) {
 }
 
 export async function insereUsuario(dadosCadastrais: IUsuario) {
-    await prisma.users.create({ data: { email: dadosCadastrais.email, password: dadosCadastrais.password } })
-    console.log(dadosCadastrais)
+    return await prisma.users.create({ data: { email: dadosCadastrais.email, password: dadosCadastrais.password } })
 }

@@ -21,7 +21,7 @@ export async function ecriptografarSenha(senha: string) {
 }
 
 export async function criarUsuario(data: IUsuario) {
-    await insereUsuario(data)
+    return await insereUsuario(data)
 }
 
 export async function verificaEmailLogin(email: string) {
