@@ -37,6 +37,10 @@ export async function buscaProvasPorDisciplinas() {
                     name: true,
                     TeachersDisciplines: {
                         select: {
+                            id: false,
+                            disciplineId: false,
+                            teacherId: false,
+                            teacher: {},
                             Tests: {
                                 select: {
                                     id: true,
@@ -44,18 +48,45 @@ export async function buscaProvasPorDisciplinas() {
                                     pdfUrl: true,
                                     category: { select: { name: true } }
                                 }
-                            },
-                            teacher: {
-                                select: {
-                                    name: true
-                                }
                             }
                         }
                     }
                 }
             }
         }
-        // select: {
-
     })
 }
+
+
+
+
+                      // include: {
+                        //     teacher: {},
+                        //     Tests: {
+                        //         select: {
+                        //             id: true,
+                        //             name: true,
+                        //             pdfUrl: true,
+                        //             category: { select: { name: true } }
+                        //         }
+                        //     }
+                        // },
+                        // select: {
+                        //     teacher: {
+                        //         select: {
+                        //             name: true
+                        //         }
+                        //     },
+                        // Tests: {
+                        //     select: {
+                        //         id: true,
+                        //         name: true,
+                        //         pdfUrl: true,
+                        //         category: { select: { name: true } }
+                        //     }
+                        // }
+                        // }
+
+
+
+                                // select: {
