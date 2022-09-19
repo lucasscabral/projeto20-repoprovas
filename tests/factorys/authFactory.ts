@@ -1,6 +1,3 @@
-import { faker } from "@faker-js/faker"
-
-
 export async function loginFactory() {
     return {
         email: "email@gmail.com",

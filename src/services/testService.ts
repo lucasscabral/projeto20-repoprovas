@@ -1,4 +1,4 @@
-import { ITestData } from "../types/test";
+import { ITestData } from "../types/testType";
 import * as testRepository from "../repositories/testRepository"
 
 export async function buscaCategoria(categoriaId: number) {

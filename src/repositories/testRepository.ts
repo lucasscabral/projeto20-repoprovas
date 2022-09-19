@@ -1,5 +1,5 @@
 import prisma from "../database/prismaClient";
-import { ITestData } from "../types/test";
+import { ITestData } from "../types/testType";
 
 
 export async function buscaCategoriaId(categoriaId: number) {
