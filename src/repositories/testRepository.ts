@@ -19,7 +19,6 @@ export async function buscaProfessorDisciplinaId(professorId: number, disciplina
         where: {
             teacherId: professorId,
             disciplineId: disciplinaId
-
         }
     })
 }
@@ -42,11 +41,20 @@ export async function buscaProvasPorDisciplinas() {
                             teacherId: false,
                             teacher: {},
                             Tests: {
+
                                 select: {
-                                    id: true,
-                                    name: true,
-                                    pdfUrl: true,
-                                    category: { select: { name: true } }
+                                    category: {
+                                        select: {
+                                            name: true,
+                                            Tests: {
+                                                select: {
+                                                    id: true,
+                                                    name: true,
+                                                    pdfUrl: true,
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -58,35 +66,39 @@ export async function buscaProvasPorDisciplinas() {
 }
 
 
-
-
-                      // include: {
-                        //     teacher: {},
-                        //     Tests: {
-                        //         select: {
-                        //             id: true,
-                        //             name: true,
-                        //             pdfUrl: true,
-                        //             category: { select: { name: true } }
-                        //         }
-                        //     }
-                        // },
-                        // select: {
-                        //     teacher: {
-                        //         select: {
-                        //             name: true
-                        //         }
-                        //     },
-                        // Tests: {
-                        //     select: {
-                        //         id: true,
-                        //         name: true,
-                        //         pdfUrl: true,
-                        //         category: { select: { name: true } }
-                        //     }
-                        // }
-                        // }
-
-
-
-                                // select: {
+export async function buscaProvasPorProfessores() {
+    return prisma.teachers.findMany({
+        select: {
+            name: true,
+            TeachersDisciplines: {
+                select: {
+                    Tests: {
+                        select: {
+                            category: {
+                                select: {
+                                    name: true,
+                                    Tests: {
+                                        select: {
+                                            id: true,
+                                            name: true,
+                                            pdfUrl: true,
+                                            teacherDiscipline: {
+                                                select: {
+                                                    disciplines: {
+                                                        select: {
+                                                            name: true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+}

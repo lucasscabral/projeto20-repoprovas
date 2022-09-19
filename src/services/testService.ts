@@ -38,3 +38,7 @@ export async function criaProva(corpoProva: ITestData) {
 export async function provasPorDisciplinas() {
     return await testRepository.buscaProvasPorDisciplinas()
 }
+
+export async function provasPorProfessores() {
+    return await testRepository.buscaProvasPorProfessores()
+}

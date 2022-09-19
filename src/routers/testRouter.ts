@@ -8,7 +8,7 @@ const testRouter = Router()
 
 testRouter.post("/test", validarToken, validateSchema(validaProva), testController.criaProva)
 testRouter.get("/test/discipline", validarToken, testController.listaProvasDisciplinas)
-// testRouter.get("/test/teacher", validarToken, validateSchema(validaProva),)
+testRouter.get("/test/teacher", validarToken, testController.listaProvasProfessores)
 
 
 export default testRouter
